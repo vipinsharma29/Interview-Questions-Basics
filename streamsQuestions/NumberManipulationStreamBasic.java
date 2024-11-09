@@ -2,8 +2,8 @@ package streamsQuestions;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
 
 public class NumberManipulationStreamBasic {
 
@@ -11,7 +11,40 @@ public class NumberManipulationStreamBasic {
 
         arrayManipulation();
         listManipulation();
+        intStreamManupulation();
 
+    }
+
+    private static void intStreamManupulation() {
+
+        System.out.println("14. Print number within the given range");
+        IntStream.rangeClosed(0, 6).forEach(System.out::print);
+        System.out.println();
+        System.out.println("--------");
+
+        System.out.println("15. Print all number stats from 0 and under 6");
+        IntStream.range(0, 6).forEach(System.out::print);
+        System.out.println();
+        System.out.println("--------");
+
+        System.out.println("16. Print all number under 6 and skip first 2");
+        IntStream.range(0, 6).skip(2).forEach(System.out::print);
+        System.out.println();
+        System.out.println("--------");
+
+        System.out.println("15. Print all number under 6 and limit to 2");
+        IntStream.range(0, 6).limit(2).forEach(System.out::print);
+        System.out.println();
+        System.out.println("--------");
+
+        System.out.println("16. Count number between 1 and 4");
+        System.out.println(IntStream.range(1, 4).count());
+        System.out.println("--------");
+
+        System.out.println("17. Print all number under 6 and skip first 2 and limit to 3");
+        IntStream.range(0, 6).skip(2).limit(3).forEach(System.out::print);
+        System.out.println();
+        System.out.println("--------");
     }
 
     private static void listManipulation() {
@@ -95,7 +128,7 @@ public class NumberManipulationStreamBasic {
     }
 
     private static void arrayManipulation() {
-        int[] a = { 2, 2, 4, 3, 6, 6, 7, 1, 2, 9, 11 };
+        int[] a = {2, 2, 4, 3, 6, 6, 7, 1, 2, 9, 11};
 
         System.out.println("1. Sort array using stream");
         System.out.println(Arrays.stream(a).boxed().sorted().toList());

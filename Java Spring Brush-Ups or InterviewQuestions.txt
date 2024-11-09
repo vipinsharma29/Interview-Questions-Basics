@@ -1,0 +1,375 @@
+1 SingletonClass(creation)
+	In Java, Singleton is a design pattern that ensures that a class can only have one object.
+	- Create a private constructor of the class to restrict object creation outside the class.
+	- Create a private static attribute of the class type that refers to the single object.
+	- Create a public static method that allows us to access the object we created. Inside the method,
+		we will create a condition that restricts us from creating more than one object.
+
+  FactoryPattern(creation)
+ 	In the Factory pattern, we create objects without exposing the creation logic to the client and refer to newly created objects using a common interface.
+	Abstract Factory Pattern uses a super factory and creates other factories
+	- Create an interface with abstract method.
+	- Create concrete classes implementing the same interface.
+	- Create a factory class to access a different object of interface.
+	- Use the Factory to get an object of concrete class by passing information such as type.
+
+  DecoratorPatter(Structural)
+	Create an interface.
+	Create concrete classes implementing the same interface.
+	Create abstract decorator class implementing the Shape interface.
+	Create concrete decorator class extending the ShapeDecorator class.
+	Use the RedShapeDecorator to decorate Shape objects.
+
+2 MarkerInterface
+	A marker interface is an interface that doesn't have any methods or constants inside it.
+	- Cloneable
+	- Serialization
+	- Remote
+
+3 WrapperClasses
+	The wrapper class in Java provides the mechanism to convert primitive data types into object and object into primitive.
+	-autoBoxing, unBoxing
+
+4 Immutable in java,
+	An object is considered immutable if its state cannot change after it is constructed.
+	- The class must be declared as final so that child classes can’t be created.
+	- Data members in the class must be declared private and final so that direct access is not allowed, and we can’t change the value of it after object creation.
+	- A parameterized constructor should initialize all the fields performing a deep copy so that data members can’t be modified with an object reference.
+	- Deep Copy of objects should be performed in the getter methods to return a copy rather than returning the actual object reference.
+
+5 Spring IOC is the mechanism to achieve loose-coupling between Objects dependencies. To achieve loose coupling and dynamic binding of the objects at runtime,
+    object dependencies are injected by other assembler objects.
+
+6 Spring AOP -----
+	Aspect Oriented Programming (AOP) compliments OOPs in the sense that it also provides modularity. But the key unit of modularity is aspect than class.
+	
+7 Functional Interface with singleAbstract method and can have multiple default methods.
+
+8 HashMap, HashSet, ConcurrentHashMap, ArrayList, Vector, LinkList.
+
+9 Array Initialization
+	int[] intArray = new int[20];
+
+10 Java 8.
+	- Predicate<Integer> pr = a -> (a > 18);(single argument, boolean result)
+	- Test b = (a, c) -> (a + c);
+	- b.run(2, 4)
+	interface Test {
+		int run(int a, int b);
+	}
+
+12 Spring Bean LifeCycle.
+	- Firstly, we need to create a bean HelloWorld.java in this case by implementing InitializingBean, DisposableBean, and overriding afterPropertiesSet() and destroy() method.
+	- Now, we need to configure the spring XML file spring.xml and define the bean.
+			<beans>
+    				<bean id="hw" class="beans.HelloWorld" init-method="init" destroy-method="destroy"/>
+			</beans>
+	- Finally, we need to create a driver class to run this bean.
+			ConfigurableApplicationContext cap= new ClassPathXmlApplicationContext("resources/spring.xml");
+
+13 MultiThreading
+	Sleep means thread sleep in 5000 (mSec).
+	Suspend - means to put the thread from running to waiting stage.
+	Stop is used to stop a thread.
+	notify() method of thread class is used to wake up a single thread
+	Join is wait for thread to die.
+	getPriority, setPriority, isAlive
+	There is a method called holdsLock() on java.lang.Thread, it returns true if and only if the current thread holds the monitor lock on the specified object.
+
+14 runnable, callable
+	Runnable instances can be run by Thread class as well as ExecutorService, but Callable instances can only be executed via ExecutorService.
+	Callable return's the future object, and provide methods to check lifecycle of thread.
+	Runnable cannot return the result of computation.
+	Runnable override run(), Callable override call()
+	Runnable cannot throw a checked Exception.
+
+15 Creating thread
+	in java thread can be created in two ways
+	- extending the Thread class present in java.lang
+	- Implementing The Runnable Interface present in java.lang
+
+16 Memory
+	Stack - given to all programs at start and is not changeable
+		stores variable, methods
+	Heap - given at runtime and can be increased.
+		objects are stored in a heap.
+
+17 getRequest("/getRequest/{id}")
+	@RequestParam(name = "countryCode", required=false, defaultValue="") String countryCode
+	@PathVariable("id" String id)
+
+18 Future and CompletableFuture
+	future -> get(), isDone()
+	CompletableFuture -> adds callbacks, exceptions handling and combine future objects
+
+18 System.out.print() -> java.lang package
+	system -> final class define in java.lang.package
+	The System class is a final class and does not provide any public constructors.
+	Because of this, all the members and methods contained in this class are static in nature.
+	Contains final static InputStream in, PrintStream out, PrintStream err
+
+19 Bean Scopes
+	singleton - When we define a bean with the singleton scope, the container creates a single instance of that bean; 
+			all requests for that bean name will return the same object, 
+		    which is cached. Any modifications to the object will be reflected in all references to the bean. This scope is the default value if no other scope is specified.
+	Prototype - A bean with the prototype scope will return a different instance every time it is requested from the container.
+		    It is defined by setting the value prototype to the @Scope annotation in the bean definition:
+	request - We can define the bean with the request scope using the @Scope annotation
+	session - The session scope is used to define beans that are scoped to the lifecycle of an HTTP Session.
+              This means that the bean will be created once for each session and will be destroyed when the session is closed.
+	Application - When beans are application scoped, the same instance of the bean is shared across multiple servlet-based applications running in the same ServletContext,
+		      while singleton scoped beans are scoped to a single application context only.
+	Websocket - The WebSocket scope is used to define beans that are scoped to the lifecycle of a WebSocket session.
+            This means that the bean will be created once for each WebSocket session and will be destroyed when the session is closed.
+
+20 DateTime
+	1) In the old API, Date was mutable, but in Java 8, all date and time classes like LocalDate, LocalTime, or LocalDateTime are Immutable.
+	2) In the old API, SimpleDateFormat was not thread-safe, but in Java 8, Formatter is thread-safe.
+	3) In the old Date and Calendar API, the Year starts with 1900, Months start with 0, which is corrected in Java 8; here, the numbers make more sense.
+	4) Old Date and Calendar API has just one class Date to represent date and time, but Java 8 has separated classes for Date and Time e.g. LocalDate and LocalTime
+
+21 Hibernate Caching
+	1) First-Level enable by default and belongs to a session object and ends when the session ends.
+	2) Second-Level have to enable it and belongs to sessionFactory and ends when the application stops.
+
+22 Hibernate
+	- Entity classes cannot be made as final because we cant extend them in this case (cause hibernate uses proxy classes for lazy loading).
+	- Transient - Once the instance of the entity class is created, then the object is said to have entered a transient state. These objects exist in heap memory.
+	- Persistent - This state is entered whenever the object is linked or associated with the session.
+		     An object is said to be in a persistence state whenever we save or persist an object in the database (save, persist, update, saveOrUpdate)
+	- Detached - The object enters this state whenever the session is closed or the cache is cleared. (session.close(); clear(); detach(record); evict(record));
+
+	- <property name="hibernate.cache.use_query_cache">true</property> The query cache is useful for those queries which are most frequently called with the same parameters
+	 query.setCacheable(true);
+
+	- A named SQL query is an expression represented in the form of a table.
+	 Here, SQL expressions to select/retrieve rows and columns from one or more tables in one or more databases can be specified.
+	 In hibernate, we can make use of @NameQueries and @NameQuery annotations.
+
+	- Object Relational Mapping. This is a mapping tool pattern mainly used for converting data stored in a relational database to an object used in object-oriented programming constructs.
+	
+	- Hibernate mapping file is an XML file that is used for defining the entity bean fields and corresponding database column mappings.
+
+	.get() - This method gets the data from the database as soon as it is called., hit everytime, returns null if the object is not found.
+	.load() - returns a proxy object and loads the data only when it is required., The database is hit only when it is really necessary, throws ObjectNotFoundException if the object is not found.
+	.getCurrentSession() - This method returns the session bound to the context., <property name = "hibernate.current_session_context_class"> thread </property>.
+	.openSession() - This method always opens a new session. A new session object has to be created for each request in a multithreaded environment, closed by developer.
+	.merge() - Merge() method can be used for updating existing values. The specialty of this method is, once the existing values are updated, 
+	 	   the method creates a copy from the entity object and returns it. This result object goes into the persistent context and is then tracked for any changes. 
+	.setMaxResults() - works as the LIMIT 
+	.setFetchSize() - are the results buffered, are they sent in different size chunks.
+	
+	hibernate.show_sql=true
+
+23 Key parts of the microservices architecture include.
+	- Core Services: Each service is a self-contained unit of functionality that can be developed, tested, and deployed independently of the other services.
+	- Service registry: A service registry is a database of all the services in the system, along with their locations and capabilities. It allows services to discover and communicate with each other.
+	- API Gateway: An API gateway is a single entry point for all incoming requests to the microservices. Use for authentication and rate limiting.
+	- Service discovery and load balancing:
+	-Continuous integration and continuous deployment (CI/CD);
+	-Config-Server to Externalize the Configurations
+
+24 To run two instances of spring application in local
+	- make port as 0.
+	- java -jar -Dserver.port=7012 -Dspring.profiles.active=production demo-0.0.1-SNAPSHOT.jar.
+
+25 comparable vs comparator
+	-comparable single sorting(compareTo(), java.lang, same class) , comparator multi sorting(compare(), java.util, different class)
+
+25 Agile Methodology (Feature-Driven Development)
+	- It is an iterative approach that is used to design complicated software.
+	- In this method, project teams are allowed to be more flexible and ensure that the final is fulfilling the customer’s requirements
+	- Small and manageable sprints so that it can be delivered in a specific given period of time.
+	- Agile methodologies are open to changing requirements over time and encourage constant feedback from end-users
+	- in this process, customers are also involved so that they can get updates regarding their product and also make sure whether they are meeting their requirements.
+	planning -> analysis -> designing -> building -> testing -> deployment (repeat)
+
+26 Advantages/Disadvantages of Agile
+	Faster feedback from customers or end-users 
+	Face-to-face conversation with team members and customers 
+	Adapt well with changing requirements 
+	Enables collaboration and interaction between client and project team 
+	Quick delivery of products
+
+	Difficult to estimate resource requirement and effort  
+	Not good for small development projects 
+	Requires more time and energy from everyone 
+	Risk of ever-lasting project 
+	Challenging to scale large projects
+
+27 Agile Definitions
+	- A velocity is basically a measurement unit that measures or calculates how much work an agile development team can successfully complete in a single sprint
+	 and how much time will be required to finish a project.
+	- Spike: It generally refers to a too large and complex user story in software development that cannot be estimated until the development team runs a time boxed investigation.
+	- Zero Sprint: It generally refers to the first step or pre-preparation step that comes just before the first sprint.
+	- Sprint Backlog: It is generally owned by the development team. It only contains those features and requirements that are related to the specific sprint only.
+	- Product Backlog: It is generally owned and maintained by the project owner. It usually contains every feature of the product as well as the requirements of the product.
+	- Burn-up Chart: It is a type of chart that is used to display or represent the amount of work that has been completed and the total amount of work for a sprint or iteration.
+	- Burn-down Chart: It is a type of chart that is used to display or represent the amount of work that is remaining to be completed in the project. These charts are basic
+	 and easy to understand.
+
+28 Waterfall designs
+	- The Waterfall Methodology is a process for developing software that is linear and sequential.
+	- The stages are: requirements gathering, design, implementation, testing, and deployment.
+
+29 MongoDb basically uses JavaScript objects in place of procedures
+	MongoDB uses a dynamic database schema
+	MongoDB is straightforward to scale up or down
+
+30 Scaling
+	- Vertical scaling refers to increasing the processing power of a single server or cluster. Both relational and non-relational databases can scale up,
+	 but eventually, there will be a limit in terms of maximum processing power and throughput.
+	- Horizontal scaling, also known as scale-out, refers to bringing on additional nodes to share the load. This is challenging with relational databases due to
+	 the difficulty in spreading out related data across nodes. With non-relational databases, this is made simpler since collections are 
+	 self-contained and not coupled relationally.
+
+31 Sharding is horizontal scaling by spreading data across multiple nodes. Each node contains a subset of the overall data. This is especially effective for increasing throughput
+	for use cases that involve significant numbers of write operations, as each operation only affects one of the nodes and the partition of data it is managing.
+
+32 Replica-Set
+	Replica sets seem similar to sharding, but they differ in that the dataset is duplicated. Replication allows for high availability, redundancy/fail over handling,
+	and decreased bottlenecks on read operations. However, they can also introduce issues for applications with large numbers of write transactions, as each update must
+	be propagated over to every replica set member.
+
+33 OAuth 2.0
+	- OAuth 2.0 is an authorization protocol and NOT an authentication protocol.
+	- it is designed primarily as a means of granting access to a set of resources.
+	- An Access Token is a piece of data that represents the authorization to access resources on behalf of the end-user
+	
+	- Authorization Server: This server receives requests from the Client for Access Tokens and issues them upon successful authentication and consent by the Resource Owner.
+	 The authorization server exposes two endpoints: the Authorization endpoint, which handles the interactive authentication and consent of the user, and the Token endpoint,
+	 which is involved in a machine to machine interaction.
+	- A server that protects the user’s resources and receives access requests from the Client. It accepts and validates an Access Token from the Client and returns the
+	 appropriate resources to it.
+
+34 Recursion uses Stack Data Structure.
+
+35 Encapsulation -> is to make sure that "sensitive" data is hidden from users, getter-setter implementation level.
+   Abstraction -> Abstraction represents only useful data, whereas encapsulation wraps data and codes for necessary information.
+
+36 Overloading is known as compile-time polymorphism, overriding is a runtime-time polymorphism.
+	- No, we cannot override static methods because they are based on dynamic binding at runtime and the static methods are bonded using static binding at compile time.
+	- Yes, we can overload static methods.
+
+37 Serializable
+	to make the child class not Serialize, you can override the writeToObject method.
+
+transient, volatile, profiling, transaction.
+microservice arch
+
+
+38 Stream ->
+	intermediate operation
+	-- filter -> takes predicate and returns stream.
+	-- map -> performs given function and return stream.
+	-- distinct -> operation returns a stream with unique elements, eliminating duplicates.
+	-- sorted -> sorts the elements of the stream. You can also provide a custom comparator.
+		.sorted((p1, p2)->p1.x.compareTo(p2.x)) 
+		.sorted(Comparator.reverseOrder())
+	-- flatMap -> same as a map, but it can flatten nested streams into a single stream.
+		.flatMapToInt(Arrays::stream)
+		.flatMap(num -> Stream.of(num))
+	
+	terminal operation
+	-- allMatch -> takes predicate and boolean result.
+	-- anyMatch -> takes predicate and boolean result.
+	-- nonMatch
+	-- toArray
+	-- collect
+	-- min
+	-- max
+	-- count
+	-- findFirst
+	-- finsAny
+	-- builder
+	-- concat
+	
+39 Consumer
+	it accepts one argument and return nothing.
+	-accept() -> This method accepts one value and performs the operation on the given argument.
+	-andThen() -> It returns a composed Consumer wherein the parameterized Consumer will be executed after the first one.
+	
+40 BiConsumer
+	it accepts two arguments and return nothing.
+	-accept() -> This method accepts one value and performs the operation on the given argument.
+	-andThen() -> It returns a composed Consumer wherein the parameterized Consumer will be executed after the first one.
+
+41 Predicate
+	accepts an argument and, in return, generates a boolean value as an answer is known as a predicate.
+	-isEqual()
+	-and(Predicate)
+	-or(Predicate)
+	-negate()
+	-test(value)
+	
+42 BiPredicate
+	accepts two arguments and, in return, generates a boolean value as an answer is known as a predicate.
+	-isEqual()
+	-and(Predicate)
+	-or(Predicate)
+	-negate()
+	-test(value)
+	
+43 Inheritance
+	- you cant initiate a child class object with a parent class
+		child c = new parent() wrong
+	- Using polymorphism: Parent reference pointing to a Child object. this is known as polymorphic behavior
+		parent p = new child() correct
+		List<? extends parent> a1 = new ArrayList<child>();
+		in this case, if a method is overridden, then the child class method will be picked.
+		but if a variable is overridden it will be taken from parent
+		
+		
+		101487500268
+
+44 Synchronous & Asynchronous
+	- When a synchronous operation is initiated, the program waits for it to complete before moving on to the next line of code.
+	- Tasks are initiated and allowed to run independently. The program does not wait for the task to finish but instead moves on to the next operation immediately
+	- http calls are Synchronous.
+
+45 Java Message Service
+	JVM is a Java API that provides a way to create, send, receive, and read messages between distributed systems in a reliable, loosely-coupled, and asynchronous manner.
+		- JMS Provider: A messaging middleware that implements the JMS API and handles the communication between different clients (e.g., Apache ActiveMQ, RabbitMQ).
+		- JMS Clients: Java applications or components that use the JMS API to produce (send) and consume (receive) messages.
+		- Messages: The data sent between JMS clients. They can carry text, bytes, objects, or other types of data.
+		- Administered Objects:
+			Connection Factory: An object used to create a connection to the JMS provider.
+			Destination: The target where messages are sent or received, typically either a Queue or a Topic.
+
+46 JMS Messaging Models
+	- Point-to-Point (P2P) Model
+		Messages are sent to a specific queue and are consumed by one consumer at a time
+		Each message is delivered to one consumer only (one-to-one). The consumer does not need to be actively running when the message is sent, as it will remain in the queue until it's consumed
+	- Publish-Subscribe (Model)
+		Messages are sent to a topic, where multiple subscribers can consume the same message
+		All consumers who subscribe to a topic receive a copy of each message (one-to-many). Consumers must generally be active to receive the messages unless they have durable subscriptions that allow them to retrieve messages sent while they were inactive.
+
+46 JMS working
+	- Establishing a Connection: The client obtains a ConnectionFactory object from the JMS provider, which is used to establish a connection.
+	- Creating a Session: The connection object then creates a Session, where the client can define the transactions and receive acknowledgments.
+	- Creating Destinations: Using the session, the client defines destinations (queues or topics) where messages will be sent or received.
+	- Creating a Message Producer or Consumer:
+	- Producer: The client creates a MessageProducer to send messages to a destination.
+	- Consumer: The client creates a MessageConsumer to receive messages from a destination.
+	- Sending Messages: The producer sends messages to a queue or topic, which the JMS provider holds until they are delivered to the intended consumer(s).
+	- Receiving Messages: The consumer listens for messages on the queue or topic and processes them as they arrive. This can happen synchronously (blocking) or asynchronously (non-blocking).
+	- Acknowledging and Committing: Depending on the session configuration, messages are acknowledged and possibly committed if the session is transactional.
+
+47 Redis
+	- redis uses InMemory Data storage
+	- Single-threaded Model.
+	- Persistence Options
+	- Redis optimizes the way it stores data in memory, depending on the type of data structure. For instance:
+	
+48 Java External Libraries
+	1) Log4j - A popular logging framework for Java applications
+	2) Jackson - A powerful library for converting Java objects to JSON and vice versa
+	3) Apache POI - A library for working with Microsoft Office formats files.
+	4) Mockito - A mocking framework for unit testing in Java.
+	5) Lombok - A Java library that helps reduce boilerplate code through annotations.
+
+49 @PostConstruct and @PreDestroy
+	-The @PostConstruct annotation is used to define a method that will be invoked immediately after the bean's properties have been set
+	-The @PreDestroy annotation is used to define a method that will be invoked before the bean is destroyed
+	-Both @PostConstruct and @PreDestroy are useful for managing a bean's lifecycle without the need to implement InitializingBean and DisposableBean interfaces or configure the init-method and destroy-method attributes in XML.
+	-@PostConstruct is executed after dependency injection, and @PreDestroy is executed just before bean destruction.
