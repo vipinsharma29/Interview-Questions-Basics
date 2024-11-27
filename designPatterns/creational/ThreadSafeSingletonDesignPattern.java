@@ -1,4 +1,4 @@
-package designPatterns;
+package designPatterns.creational;
 
 public class ThreadSafeSingletonDesignPattern {
 

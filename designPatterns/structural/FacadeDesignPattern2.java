@@ -1,4 +1,4 @@
-package designPatterns;
+package designPatterns.structural;
 
 class DVDPlayer {
     public void on() {
@@ -86,7 +86,7 @@ class HomeTheaterFacade {
 }
 
 
-public class FacadeDesignPattern {
+public class FacadeDesignPattern2 {
 
     public static void main(String[] args) throws InterruptedException {
         DVDPlayer dvdPlayer = new DVDPlayer();

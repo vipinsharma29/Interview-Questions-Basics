@@ -1,4 +1,4 @@
-package designPatterns;
+package designPatterns.creational;
 
 // Step 1: Define interfaces for products
 interface Vehicle {
