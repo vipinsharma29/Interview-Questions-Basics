@@ -28,6 +28,12 @@ public class EmployeeObjectStream {
         // sort employee based on salary
         emps.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).forEach(System.out::println);
 
+        System.out.println("------");
+
+        // sort on name first and then on salary
+        emps.stream().sorted(Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary)).forEach(System.out::println);
+
+
 //         or
 //        Collections.sort(emps, new Comparator<Employee>() {
 //            @Override
