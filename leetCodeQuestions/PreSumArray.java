@@ -38,24 +38,24 @@ public class PreSumArray {
 //                currSum = 0;
 //                }
 //        }
-
-        int[] height = {1,8,6,2,5,4,8,3,7};
-        int max1 = 0, left = 0, right = height.length - 1;
-
-        while (left < right) {
-            int minValue = height[left] < height[right] ? left : right;
-            max1 = max1 < height[minValue] * (right-left) ? height[minValue] * (right-left): max1;
-            if (height[left] < height[right]) {
-                left++;
-            } else if (height[left] > height[right]){
-                right--;
-            } else {
-                left++;
-                right--;
-            }
-        }
-
-        
-        System.out.println(max1);
+//
+//        int[] height = {1,8,6,2,5,4,8,3,7};
+//        int max1 = 0, left = 0, right = height.length - 1;
+//
+//        while (left < right) {
+//            int minValue = height[left] < height[right] ? left : right;
+//            max1 = max1 < height[minValue] * (right-left) ? height[minValue] * (right-left): max1;
+//            if (height[left] < height[right]) {
+//                left++;
+//            } else if (height[left] > height[right]){
+//                right--;
+//            } else {
+//                left++;
+//                right--;
+//            }
+//        }
+//
+//
+//        System.out.println(max1);
     }
 }
