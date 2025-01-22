@@ -1,5 +1,8 @@
 package streamsQuestions;
 
+import models.Actor;
+import models.Movie;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -89,59 +92,5 @@ public class NestedObjectsStreamBasic {
         Movie movie3 = new Movie(actors3, "The Post");
         movies.add(movie3);
         return movies;
-    }
-}
-
-class Movie {
-
-    private String name;
-    private List<Actor> actors;
-
-    public Movie(List<Actor> actors, String name) {
-        this.actors = actors;
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Actor> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<Actor> actors) {
-        this.actors = actors;
-    }
-}
-
-class Actor {
-
-    private String name;
-    private Double salary;
-
-    public Actor(String name, Double salary) {
-        this.name = name;
-        this.salary = salary;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
     }
 }

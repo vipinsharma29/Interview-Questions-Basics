@@ -11,7 +11,9 @@ interface Hotel {
 // HotelKeeperFacade is the Facade class that help ypu communicate with the Hotel classes
 interface HotelKeeperFacade {
     VegMenu getVegMenu();
+
     NonVegMenu getNonVegMenu();
+
     Both getVegNonMenu();
 }
 

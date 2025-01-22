@@ -64,7 +64,7 @@ public class SingleManipulationsStreamBasic {
 
 
             System.out.println("2. Find out frequency of each character map even and odd");
-            Map<String ,String > evenOrOdd = map.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> {
+            Map<String, String> evenOrOdd = map.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> {
                 return (e.getValue() % 2 == 0) ? "Even" : "Odd";
             }));
             System.out.println(evenOrOdd);

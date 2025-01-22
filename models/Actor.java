@@ -1,11 +1,11 @@
-package functionalPrograming;
+package models;
 
-public class Employee {
+public class Actor {
 
     private String name;
-    private double salary;
+    private Double salary;
 
-    public Employee(String name, double salary) {
+    public Actor(String name, Double salary) {
         this.name = name;
         this.salary = salary;
     }
@@ -18,12 +18,11 @@ public class Employee {
         this.name = name;
     }
 
-    public double getSalary() {
+    public Double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
-
 }

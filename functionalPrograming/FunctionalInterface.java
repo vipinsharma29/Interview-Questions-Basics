@@ -1,5 +1,7 @@
 package functionalPrograming;
 
+import models.Employee;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -65,10 +67,7 @@ public class FunctionalInterface {
         Function<List<Integer>, Integer> mulAllByReduce = list -> list.stream().reduce(1, (a, b) -> a * b);
         System.out.println(mulAllByReduce.apply(numbers));
 
-        List<Employee> emps = new ArrayList<>();
-        emps.add(new Employee("v", 20000));
-        emps.add(new Employee("i", 30000));
-        emps.add(new Employee("p", 40000));
+        List<Employee> employees = Employee.getEmployeeList();
 
         Function<List<Employee>, Double> sumSalary = list -> list.stream().map(Employee::getSalary).mapToDouble(Double::doubleValue).sum();
         Function<List<Employee>, Double> sumSalaryByReduce = list -> list.stream().map(Employee::getSalary).reduce(0.0, Double::sum);
@@ -76,13 +75,13 @@ public class FunctionalInterface {
         Function<List<Employee>, String> concatEmpName = list -> list.stream().map(Employee::getName).collect(Collectors.joining());
         Function<List<Employee>, String> concatEmpNameByReduce = list -> list.stream().map(Employee::getName).reduce("", String::concat);
 
-        System.out.println(sumSalary.apply(emps));
-        System.out.println(sumSalaryByReduce.apply(emps));
-        System.out.println(concatEmpName.apply(emps));
-        System.out.println(concatEmpNameByReduce.apply(emps));
+        System.out.println(sumSalary.apply(employees));
+        System.out.println(sumSalaryByReduce.apply(employees));
+        System.out.println(concatEmpName.apply(employees));
+        System.out.println(concatEmpNameByReduce.apply(employees));
 
         Function<List<Employee>, String> empWithSalary = list -> list.stream().map(emp -> emp.getName() + " -> " + emp.getSalary()).collect(Collectors.joining(", "));
-        System.out.println(empWithSalary.apply(emps));
+        System.out.println(empWithSalary.apply(employees));
 
     }
 

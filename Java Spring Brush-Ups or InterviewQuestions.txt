@@ -336,7 +336,7 @@ microservice arch
 			Connection Factory: An object used to create a connection to the JMS provider.
 			Destination: The target where messages are sent or received, typically either a Queue or a Topic.
 
-46 JMS Messaging Models
+46 JMS Messaging models
 	- Point-to-Point (P2P) Model
 		Messages are sent to a specific queue and are consumed by one consumer at a time
 		Each message is delivered to one consumer only (one-to-one). The consumer does not need to be actively running when the message is sent, as it will remain in the queue until it's consumed

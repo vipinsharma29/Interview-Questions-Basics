@@ -1,3 +1,7 @@
+package functionalPrograming;
+
+import models.Employee;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,10 +25,7 @@ interface CalculateSample {
 public class FunctionalInterfaces {
 
     public static void main(String[] args) {
-        List<Employee> emps = new ArrayList<>();
-        emps.add(new Employee("vipin", "A", 70000));
-        emps.add(new Employee("rio", "B", 30000));
-        emps.add(new Employee("vipul", "B", 40000));
+        List<Employee> employees = Employee.getEmployeeList();
 
         List<Integer> listValues = new ArrayList<Integer>();
         listValues.add(2);
@@ -37,13 +38,13 @@ public class FunctionalInterfaces {
         listValues2.add(6);
 
         consumers(listValues, listValues2);
-        predicate(emps);
+        predicate(employees);
         customCalculate();
-        calculateSample();
+        calculateSample(employees);
 
     }
 
-    private static void calculateSample() {
+    private static void calculateSample(List<Employee> customCheckEmp) {
 
         System.out.println("7. CalculateSample Functional Interface lambda with 3 parameters");
         CalculateSample add = (int a, int samplePrice, int units) -> {
@@ -52,13 +53,6 @@ public class FunctionalInterfaces {
         System.out.println(add.run(12, 12, 10));
         System.out.println("--------");
 
-        List<Employee> customCheckEmp = new ArrayList<>();
-        customCheckEmp.add(new Employee("vipin", "A", 70000));
-        customCheckEmp.add(new Employee("vipin", "B", 30000));
-        customCheckEmp.add(new Employee("2", "C", 30000));
-        customCheckEmp.add(new Employee("2", "C", 20000));
-        customCheckEmp.add(new Employee("3", "A", 60000));
-        customCheckEmp.add(new Employee("4", "A", 20000));
 
         System.out.println("8. CalculateSample Functional Interface lambda with 3 parameters on custom object");
         CalculateSample employeeAdd = (int a, int samplePrice, int units) -> {
@@ -112,20 +106,21 @@ public class FunctionalInterfaces {
         };
         Consumer<List<Integer>> dispList = list -> list.stream().forEach(System.out::print);
         modify.andThen(dispList).accept(Arrays.asList(1, 2));
+        System.out.println();
         System.out.println("--------");
 
         System.out.println("2. BiConsumer Functional Interface");
         BiConsumer<List<Integer>, List<Integer>> biModify = (list1, list2) -> {
-            System.out.println("bi --------------");
-            list1.stream().forEach(s -> {
+            list1.forEach(s -> {
                 System.out.print(s + " ");
             });
             System.out.println();
-            list2.stream().forEach(s -> {
+            list2.forEach(s -> {
                 System.out.print(s + " ");
             });
         };
         biModify.accept(listValues, listValues2);
+        System.out.println();
         System.out.println("--------");
     }
 }

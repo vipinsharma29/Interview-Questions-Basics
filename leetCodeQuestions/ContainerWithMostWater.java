@@ -3,7 +3,7 @@ package leetCodeQuestions;
 public class ContainerWithMostWater {
 
     public static void main(String[] args) {
-        int[] arr = {1,8,6,2,5,4,8,3,7};
+        int[] arr = {1, 8, 6, 2, 5, 4, 8, 3, 7};
         int result = 49;
 
         System.out.println(result == maxArea1(arr));
@@ -17,10 +17,10 @@ public class ContainerWithMostWater {
 
         while (left < right) {
             if (height[left] < height[right]) {
-                max = max < height[left] * (right-left) ? height[left] * (right-left): max;
+                max = max < height[left] * (right - left) ? height[left] * (right - left) : max;
                 left++;
             } else {
-                max = max < height[right] * (right-left) ? height[right] * (right-left): max;
+                max = max < height[right] * (right - left) ? height[right] * (right - left) : max;
                 right--;
             }
         }
@@ -32,10 +32,10 @@ public class ContainerWithMostWater {
 
         while (left < right) {
             int minValue = height[left] < height[right] ? left : right;
-            max = max < height[minValue] * (right-left) ? height[minValue] * (right-left): max;
+            max = max < height[minValue] * (right - left) ? height[minValue] * (right - left) : max;
             if (height[left] < height[right]) {
                 left++;
-            } else if (height[left] > height[right]){
+            } else if (height[left] > height[right]) {
                 right--;
             } else {
                 left++;
