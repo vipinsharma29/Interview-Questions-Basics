@@ -1,37 +1,15 @@
 package leetCodeQuestions;
 
+import models.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Queue;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
 
 public class InvertBinaryTree {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-        root.right.left = new TreeNode(7);
-        root.right.right = new TreeNode(6);
+
+        TreeNode root = TreeNode.getTreeNode();
 
         printLevelOrder(root);
 
@@ -41,7 +19,7 @@ public class InvertBinaryTree {
     }
 
     private static TreeNode invertTree(TreeNode root) {
-        if(root == null)
+        if (root == null)
             return null;
 
         TreeNode temp = root.left;
