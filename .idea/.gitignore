@@ -1,8 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-<<<<<<< HEAD
 /out/
 /company
-=======
->>>>>>> a1eade4 (kafka project with idempotent producer and consumer)
