@@ -26,10 +26,10 @@ public class WordBreak {
 
         for (int i = 0; i <= s.length(); i++) {
             String subString = s.substring(0, i);
-            if(wordDict.contains(subString)) {
+            if (wordDict.contains(subString)) {
                 words.put(subString, true);
                 String recursiveSubString = s.substring(i);
-                if(check(recursiveSubString, wordDict)) {
+                if (check(recursiveSubString, wordDict)) {
                     return true;
                 }
             }

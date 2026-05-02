@@ -4,30 +4,30 @@ public class ExceptionHandling {
 
     public static void main(String[] args) throws Exception {
 
-        try {
-            System.out.println(m1());
-        } catch (Exception e) {
-            System.out.println();
-        }
-
-        try {
-            System.out.println(m2());
-        } catch (Exception e) {
-            System.out.println();
-        }
-
-        try {
-            System.out.println(m3());
-        } catch (Exception e) {
-            System.out.println();
-        }
-
-        try {
-            System.out.println(m4());
-        } catch (Exception e) {
-            System.out.println();
-        }
-
+//        try {
+//            System.out.println(m1());
+//        } catch (Exception e) {
+//            System.out.println();
+//        }
+//
+//        try {
+//            System.out.println(m2());
+//        } catch (Exception e) {
+//            System.out.println();
+//        }
+//
+//        try {
+//            System.out.println(m3());
+//        } catch (Exception e) {
+//            System.out.println();
+//        }
+//
+//        try {
+//            System.out.println(m4());
+//        } catch (Exception e) {
+//            System.out.println();
+//        }
+//
         try {
             System.out.println(m5());
         } catch (Exception e) {
