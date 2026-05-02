@@ -3,6 +3,7 @@ package streamsQuestions;
 import models.Employee;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class EmployeeObjectStreamBasic {
@@ -42,6 +43,21 @@ public class EmployeeObjectStreamBasic {
 
         System.out.println("5. Sort on name first and then on salary");
         employees.stream().sorted(Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary)).forEach(System.out::println);
+        System.out.println("--------");
+
+
+        // return employee map key = name and value = list of employees
+        System.out.println("6. Find Highest salary employee form each grade");
+        employees.stream().collect(Collectors.groupingBy(Employee::getGrade, Collectors.maxBy(Comparator.comparing(Employee::getSalary)))).entrySet().forEach(System.out::println);
+        System.out.println("--------");
+
+        Consumer<List<Employee>> e = consumer -> consumer.stream().collect(Collectors.groupingBy(Employee::getGrade, Collectors.maxBy(Comparator.comparing(Employee::getSalary)))).entrySet().forEach(System.out::println);
+        e.accept(employees);
+        System.out.println("--------");
+
+        // return employee map key = name and value = list of employees
+        System.out.println("6. Find Highest salary form each grade");
+        employees.stream().collect(Collectors.groupingBy(Employee::getGrade, Collectors.mapping(Employee::getSalary, Collectors.maxBy(Double::compare)))).entrySet().forEach(System.out::println);
         System.out.println("--------");
 
     }

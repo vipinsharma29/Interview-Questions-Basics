@@ -4,9 +4,9 @@ public class MaxProfitOnStock {
 
     public static void main(String[] args) {
         int[] arr = {7, 6, 4, 3, 1};
-        maxProfit(arr);
+//        maxProfit(arr);
 
-        int[] arr2 = {7,1,5,3,6,4};
+        int[] arr2 = {7, 1, 5, 3, 6, 4};
         maxProfit(arr2);
     }
 
